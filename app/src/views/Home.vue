@@ -1,6 +1,6 @@
 <template>
   <b-row id="Home">
-    <b-col id="setup">
+    <b-col id="setup" cols="12" md="4" class="mb-4">
       <b-input-group prepend="Nr.:" class="m-2">
         <b-input type="number" v-model="numberOfFigures" />
         <b-input-group-append v-if="!running">
@@ -38,7 +38,11 @@
           >
         </b-progress>
       </div>
-      <LineChart id="my-chart-id" :options="chartOptions" :data="chartData" />
+      <LineChart
+        id="progression-chart"
+        :options="chartOptions"
+        :data="chartData"
+      />
 
       <details>
         <summary>Advanced settings</summary>
@@ -131,7 +135,9 @@
       </details>
     </b-col>
 
-    <b-col class="ml-5" cols="8" id="canvas-wrapper">
+    <b-col md="1" class="d-none d-md-block" />
+
+    <b-col cols="12" md="7" id="canvas-wrapper" class="mb-4">
       <div id="canvas">
         <div
           v-for="(figure, index) in figures"
@@ -142,7 +148,7 @@
         >
           <b-icon-scissors v-if="figure.type == 's'" />
           <b-icon-journal-text v-if="figure.type == 'p'" />
-          <b-icon-snow v-if="figure.type == 'r'" />
+          <b-icon-circle v-if="figure.type == 'r'" />
         </div>
       </div>
     </b-col>
@@ -431,6 +437,7 @@ export default {
   width: 100vw;
   padding: 0 5vw;
   min-height: 80vh;
+  padding-bottom: 20px;
 }
 
 #setup {
@@ -439,23 +446,25 @@ export default {
   border: 1px solid var(--shadow-color);
   border-radius: 18px;
   box-shadow: var(--shadow-color) 20px 20px;
-  height: 80vh;
+  // height: max-content;
+  max-height: 80vh;
 }
 
 #canvas-wrapper {
-  padding-right: 18px;
-  padding-top: 24px;
-  padding-left: 0;
+  padding: 0;
   border: 1px solid var(--shadow-color);
   border-radius: 18px;
   box-shadow: var(--shadow-color) 20px 20px;
   max-height: 80vh;
+  min-height: 40vh;
 }
 
 #canvas {
+  margin-right: 18px;
+  margin-top: 24px;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 18px);
+  height: calc(100% - 24px);
 }
 
 .figure {

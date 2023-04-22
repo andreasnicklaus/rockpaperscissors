@@ -1,6 +1,6 @@
 <template>
   <b-col id="app">
-    <router-view />
+    <router-view class="view" />
     <footer>
       <b-navbar>
         <b-navbar-nav class="m-auto">
@@ -41,7 +41,6 @@ html {
   background-color: var(--background-color);
   color: var(--shadow-color);
   padding-top: 40px;
-  padding-bottom: 30px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -57,5 +56,10 @@ html {
       color: var(--background-color) !important;
     }
   }
+}
+
+.view {
+  height: 90vh;
+  // overflow-y: scroll;
 }
 </style>
