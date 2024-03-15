@@ -8,29 +8,29 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.11.5",
-    "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.17.3",
-    "core-js": "^3.8.3",
+    "@babel/eslint-parser": "^7.23.10",
+    "@babel/polyfill": "^7.12.1",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "~5.0.8",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue": "^2.23.1",
+    "core-js": "^3.36.0",
+    "eslint-plugin-vue": "^9.23.0",
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.16.1",
     "portal-vue": "^2.1.7",
-    "vue": "^2.6.14",
-    "vue-chartjs": "^5.2.0",
-    "vue-router": "^3.6.5",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "vue-cli-plugin-bootstrap-vue": "~0.8.2",
-    "eslint-plugin-vue": "^8.0.3",
-    "@babel/eslint-parser": "^7.12.16",
-    "sass-loader": "^10.0.2",
-    "@vue/cli-service": "~5.0.0"
+    "sass-loader": "^14.1.1",
+    "vue": "^2.7.16",
+    "vue-chartjs": "^5.3.0",
+    "vue-cli-plugin-bootstrap-vue": "^0.8.2",
+    "vue-router": "^3.6.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "eslint": "^7.32.0",
-    "sass": "^1.26.11",
-    "vue-template-compiler": "^2.6.14"
+    "@babel/core": "^7.24.0",
+    "eslint": "^8.57.0",
+    "sass": "^1.72.0",
+    "vue-template-compiler": "^2.7.16"
   },
   "eslintConfig": {
     "root": true,

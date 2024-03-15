@@ -7,7 +7,7 @@ RUN NODE_ENV=production npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine as server
+FROM nginx:stable-alpine as server
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 

@@ -4,18 +4,20 @@
       <b-input-group prepend="Nr.:" class="m-2">
         <b-input type="number" v-model="numberOfFigures" />
         <b-input-group-append v-if="!running">
-          <b-button @click="restart" v-if="this.figures.length > 0">
-            <b-icon-skip-start-fill />
-            Restart
-          </b-button>
-          <b-button v-if="!stopped" @click="go" variant="success">
-            Go
-            <b-icon-play-fill />
-          </b-button>
-          <!-- <b-button @click="test" variant="success">
+          <b-button-group>
+            <b-button @click="restart" v-if="this.figures.length > 0">
+              <b-icon-skip-start-fill />
+              Restart
+            </b-button>
+            <b-button v-if="!stopped" @click="go" variant="success">
+              Go
+              <b-icon-play-fill />
+            </b-button>
+            <!-- <b-button @click="test" variant="success">
             test
             <b-icon-play />
           </b-button> -->
+          </b-button-group>
         </b-input-group-append>
         <b-input-group-append v-else>
           <b-button @click="stop" variant="danger">
