@@ -180,6 +180,8 @@ ChartJS.register(
   Legend
 );
 
+const intervalMs = 100;
+
 export default {
   name: "HomeView",
   components: { LineChart },
@@ -193,7 +195,7 @@ export default {
       fieldzoom: 5,
       borderpush: 0.1,
       bordermargin: 0.1,
-      collision: 0.06,
+      collision: 0.04,
       chaseeHandicap: 0.2,
       distanceExponent: 1.5,
       noise: 0.1,
@@ -238,7 +240,7 @@ export default {
       if (this.figures.length == 0) this.initFigures();
       this.running = true;
       this.stopped = false;
-      this.gameticker = setInterval(this.tick, 100);
+      this.gameticker = setInterval(this.tick, intervalMs);
     },
     stop() {
       this.running = false;
@@ -252,6 +254,7 @@ export default {
       return {
         bottom: figure.y + "%",
         left: figure.x + "%",
+        transition: `all ${intervalMs / 1000}s`,
       };
     },
     tick() {
