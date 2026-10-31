@@ -15,7 +15,7 @@
     "@vue/cli-service": "5.0.9",
     "bootstrap": "5.3.8",
     "bootstrap-vue": "2.23.1",
-    "core-js": "3.36.0",
+    "core-js": "3.51.0",
     "eslint-plugin-vue": "10.11.1",
     "mutationobserver-shim": "0.3.7",
     "popper.js": "1.16.1",
