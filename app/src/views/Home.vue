@@ -146,7 +146,7 @@
           :key="index"
           class="figure"
           :id="'figure' + index"
-          :style="getFigureStyle(figure)"
+          ref="figureEls"
         >
           <b-icon-scissors v-if="figure.type == 's'" />
           <b-icon-journal-text v-if="figure.type == 'p'" />
@@ -158,6 +158,7 @@
 </template>
 
 <script>
+import gsap from "gsap";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -235,6 +236,12 @@ export default {
       this.rockData = [];
       this.scissorData = [];
       this.paperData = [];
+      this.$nextTick(() => {
+        (this.$refs.figureEls || []).forEach((el, i) => {
+          const fig = this.figures[i];
+          if (el && fig) gsap.set(el, { left: fig.x + "%", bottom: fig.y + "%" });
+        });
+      });
     },
     go() {
       if (this.figures.length == 0) this.initFigures();
@@ -249,13 +256,6 @@ export default {
     restart() {
       this.figures = [];
       this.go();
-    },
-    getFigureStyle(figure) {
-      return {
-        bottom: figure.y + "%",
-        left: figure.x + "%",
-        transition: `all ${intervalMs / 1000}s`,
-      };
     },
     tick() {
       this.transformations();
@@ -351,6 +351,18 @@ export default {
         fig.x = Math.max(Math.min(this.fieldsize, newX), 0);
         fig.y = Math.max(Math.min(this.fieldsize, newY), 0);
       });
+
+      (this.$refs.figureEls || []).forEach((el, i) => {
+        const fig = this.figures[i];
+        if (!el || !fig) return;
+        gsap.to(el, {
+          left: fig.x + "%",
+          bottom: fig.y + "%",
+          duration: intervalMs / 1000,
+          ease: "none",
+          overwrite: true,
+        });
+      });
     },
     singleMoveVector(figA, figB) {
       if (figA.type == figB.type) {
@@ -398,6 +410,11 @@ export default {
       const dist = Math.sqrt(Math.round(x_dist) ** 2 + Math.round(y_dist) ** 2);
       return dist;
     },
+  },
+  beforeUnmount() {
+    (this.$refs.figureEls || []).forEach((el) => {
+      if (el) gsap.killTweensOf(el);
+    });
   },
   computed: {
     rockNumber() {
